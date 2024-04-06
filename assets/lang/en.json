@@ -83,7 +83,14 @@
   "phone_number": "  \n    Phone Number",
   "Email": "  \n    Email",
   "Password": "    Password ",
-  "change": "Change"
+  "change": "Change",
+  "next": "Next",
+  "gps_monitoring": "GPS Monitoring",
+  "gps_monitoring_info": "   Gps monitoring to know where the\n blind is by the place where the roaia \n                      glasses in .",
+  "sos_noti": "SOS Notification",
+  "sos_noti_info": "We provide SOS notification if he fall in trouble  there is a notification sent  directly to app and the glasses take photo then sent them to app  then escort can  go to target place without any  problem or obstacle.",
+  "addcontact": "Add Contact",
+  "addcontact_info": "Add contact feature which make glasses know people front of it."
 
 
 
