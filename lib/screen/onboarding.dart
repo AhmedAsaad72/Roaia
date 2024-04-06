@@ -12,11 +12,19 @@ class Boarding
   Boarding({required this.image,required this.title,required this.body});
 }
 
-class Onborading_Screen extends StatelessWidget {
+class Onborading_Screen extends StatefulWidget {
+
+  Onborading_Screen({super.key});
+
+  @override
+  State<Onborading_Screen> createState() => _Onborading_ScreenState();
+}
+
+class _Onborading_ScreenState extends State<Onborading_Screen> {
   // Onborading_Screen({super.key});
-
-
   var controller =PageController();
+
+  bool isLast = false;
 
   List<Boarding> boarding=
   [
@@ -27,15 +35,13 @@ class Onborading_Screen extends StatelessWidget {
     ),
     Boarding(image:"assets/images/image2.png" ,
       title:"SOS Notification",
-      body: "We provide SOS notification if he fall in trouble \n there is a notification sent directly to app and\n the glasses take photo then sent them to app \n then escort can go to target place without any\n                     problem or obstacle. ",
+      body: "We provide SOS notification if he fall in trouble  there is a notification sent  directly to app and the glasses take photo then sent them to app  then escort can  go to target place without any  problem or obstacle. ",
     ),
     Boarding(image:"assets/images/image3.png" ,
       title:"Add Contact",
-      body: "Add contact feature which make glasses know \n                           people front of it.",
+      body: "Add contact feature which make glasses know people front of it.",
     ),
   ];
-
-  Onborading_Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,49 +51,62 @@ class Onborading_Screen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 680,
+              height: MediaQuery.of(context).size.height*.80,
               child: PageView.builder(
+                onPageChanged: (index){
+                  if(index == boarding.length - 1){
+                   setState(() {
+                     isLast = true ;
+                   });
+                  }else{
+                    setState(() {
+                      isLast = false ;
+                    });
+                  }
+                },
                   controller: controller,
                   physics: BouncingScrollPhysics(),
                   itemCount: boarding.length,
                   itemBuilder: (context,  index){
-                    return   Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 170,
-                        ),
-                        Image.asset(
-                            "${boarding[index].image}"),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Text(
-                          "${boarding[index].title} ",style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                            color: Color(0xff5095FF)
-                        ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          "${boarding[index].body}",style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,color: Color(0xffA8A29E),
-                        ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
+                    return   SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                           height: MediaQuery.of(context).size.height*.2,
+                          ),
+                          Image.asset(
+                              "${boarding[index].image}"),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          Text(
+                            "${boarding[index].title} ",style:const TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20,
+                              color: Color(0xff5095FF)
+                          ),
+                          ),
+                          const  SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            "${boarding[index].body}",style:const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,color: Color(0xffA8A29E),
+                          ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
                     );
                   }),
             ),
             SmoothPageIndicator(
               controller: controller,
-              effect: ExpandingDotsEffect(
+              effect:const ExpandingDotsEffect(
                   dotHeight: 10,
                   dotWidth: 10,
                   spacing: 5,
@@ -95,11 +114,11 @@ class Onborading_Screen extends StatelessWidget {
               ),
               count: boarding.length,
             ),
-            SizedBox(
+            const  SizedBox(
               height: 32,
             ),
             Container(
-              width: 300,
+              width: MediaQuery.of(context).size.width*.75,
               height: 44,
               decoration: BoxDecoration(
                 color: Color(0xff2C67FF),
@@ -107,10 +126,16 @@ class Onborading_Screen extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: (){
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder:(context) => Login_Screen(), ));
-                },
-                child: Text(   "Next",style: TextStyle(
+                  if(isLast){
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder:(context) => Login_Screen(), ));
+                  }else{
+                    controller.nextPage(
+                        duration:const Duration(seconds: 1),
+                        curve:Curves.bounceInOut);
+                  }
+                  },
+                child:const Text( "Next",style: TextStyle(
                     fontSize: 15,fontWeight: FontWeight.w500,color: Colors.white
                 ),),
               ),

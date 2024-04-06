@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roaia/localization/localization_methods.dart';
 import 'package:roaia/screen/add_contact.dart';
 
 class User_Screen extends StatefulWidget {
@@ -55,13 +56,13 @@ class _User_ScreenState extends State<User_Screen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: 130,
+                    width: MediaQuery.of(context).size.width*.30,
                   ),
                   Container(
                     width: 113,
@@ -69,7 +70,7 @@ class _User_ScreenState extends State<User_Screen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                     borderRadius: BorderRadius.circular(22),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Color(0xffE5E5E5),
                           spreadRadius: 15,
@@ -80,7 +81,7 @@ class _User_ScreenState extends State<User_Screen> {
                     ),
                     child: Center(
                       child: Text(
-                        'Users',style: TextStyle(
+                       tr("users", context),style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
                         color: Color(0xff5095FF)
@@ -89,14 +90,14 @@ class _User_ScreenState extends State<User_Screen> {
                     ),
                   ),
                   SizedBox(
-                    width: 55,
+                    width: MediaQuery.of(context).size.width*.10,
                   ),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>Add_Contact_Screen(),
+                            builder: (context) =>const Add_Contact_Screen(),
                           ));
                     },
                     child: Image.asset(
@@ -105,26 +106,26 @@ class _User_ScreenState extends State<User_Screen> {
 
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                height:700,
+                height:title.length*100,
                 child: ListView.builder(
                   itemCount: title.length,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: Color(0xff2323230A))
+                        border: Border.all(color: const Color(0xff2323230A))
                       ),
                       child: ListTile(
                          leading: Image.asset("${image[index]}",),
                         title: Text(
-                          "${title[index]}",style: TextStyle(
+                          "${title[index]}",style: const TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 16
                         ),
@@ -133,67 +134,20 @@ class _User_ScreenState extends State<User_Screen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                                '${subtitle[index]}',style: TextStyle(
+                                '${subtitle[index]}',style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400
                             ),),
                             Text(
-                              '${subtitle2[index]}',style: TextStyle(
+                              '${subtitle2[index]}',style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400
                             ),),
                           ],
                         ),
-                        trailing: Icon(Icons.edit_rounded),
+                        trailing: const Icon(Icons.edit_rounded),
                       ),
                     );
-                    // return  Column(
-                    //   children: [
-                    //     SizedBox(
-                    //       height: 16,
-                    //     ),
-                    //     Row(
-                    //       children: [
-                    //         SizedBox(
-                    //           width: 20,
-                    //         ),
-                    //         Image.asset("${image[index]}"),
-                    //         SizedBox(
-                    //           width: 10,
-                    //         ),
-                    //         Column(
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           children: [
-                    //             Text(
-                    //               "${title[index]}",style: TextStyle(
-                    //                 fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xff161C2B)
-                    //             ),),
-                    //             SizedBox(
-                    //               height: 3,
-                    //             ),
-                    //             Text(
-                    //               "${subtitle[index]}",style: TextStyle(
-                    //                 fontSize: 12,fontWeight: FontWeight.w400,color: Color(0xff6F6F79)
-                    //             ),),
-                    //           ],
-                    //         ),
-                    //         Spacer(),
-                    //         Icon(
-                    //           Icons.call_outlined,color: Colors.blue,),
-                    //         SizedBox(
-                    //           width: 25,
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     SizedBox(
-                    //       height: 16,
-                    //     ),
-                    //     Divider(
-                    //       thickness: 2,
-                    //       color: Color(0xffE9E9F1),
-                    //     ),
-                    //   ],
-                    // );
                   },
 
                 ),

@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:roaia/localization/localization_methods.dart';
 import 'package:roaia/screen/onboarding.dart';
 
 class Splash_Screen extends StatefulWidget {
@@ -29,7 +30,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
       body: Center(
         child: AnimatedTextKit(
           animatedTexts: [
-            WavyAnimatedText('Roaia',textStyle: TextStyle(
+            WavyAnimatedText(tr("Roaia", context),textStyle:const TextStyle(
                 fontSize: 65,
                 fontWeight: FontWeight.w400,
                 color: Color(0xff1363DF)

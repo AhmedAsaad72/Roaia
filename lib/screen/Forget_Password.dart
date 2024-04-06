@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roaia/localization/localization_methods.dart';
 import 'package:roaia/screen/OTP.dart';
 
 class Forget_Password_Screen extends StatelessWidget {
@@ -8,9 +9,13 @@ class Forget_Password_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      leading: Icon(Icons.arrow_back_ios_new),
+      leading:IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new)),
         title: Text(
-          'Forget Password',style: TextStyle(
+          tr("fpassword", context),style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w700,
           color: Color(0xff1363DF)
@@ -23,46 +28,49 @@ class Forget_Password_Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+           const SizedBox(
               height: 50,
             ),
-            Text(
-              'Email',style: TextStyle(
+              Text(
+              tr("mail_restpassword", context),style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
               color: Color(0xff40444C),
             ),),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            TextFormField(
-              decoration:InputDecoration(
-                  labelText: 'Ex, shahdibrahiem@gmail.com',
-                  prefixIcon: Icon(Icons.email),
-                  labelStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      color: Color(0xff96A0B6)
-                  ),
-                  border: OutlineInputBorder()
+            SizedBox(
+              height: 48,
+              child: TextFormField(
+                decoration:const InputDecoration(
+                    labelText: 'ahmed.asad3988@gmail.com',
+                    prefixIcon: Icon(Icons.email,size: 18,),
+                    labelStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                        color: Color(0xff96A0B6)
+                    ),
+                    border: OutlineInputBorder()
+                ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Container(
-              width: 360,
+              width: MediaQuery.of(context).size.width*90,
               height: 44,
               decoration: BoxDecoration(
-                color: Color(0xff2C67FF),
+                color: const Color(0xff2C67FF),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: TextButton(
                 onPressed: (){
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder:(context) => OTP_Screen(), ));
+                    builder:(context) => const OTP_Screen(), ));
                 },
-                child: Text("Reset Password",style: TextStyle(
+                child: Text(tr( "rpassword", context),style: const TextStyle(
                     fontSize: 15,fontWeight: FontWeight.w500,color: Colors.white
                 ),),
               ),

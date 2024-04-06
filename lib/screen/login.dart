@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roaia/localization/localization_methods.dart';
 import 'package:roaia/screen/Forget_Password.dart';
 import 'package:roaia/screen/botton_bar.dart';
 import 'package:roaia/screen/sign_Up.dart';
@@ -15,148 +16,150 @@ class Login_Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+           const SizedBox(
               height: 70,
             ),
             Center(
               child: Text(
-                'Roaia',style: TextStyle(
-                fontWeight: FontWeight.w400,
+                tr("Roaia" ,context),
+                style:const TextStyle(
+                fontWeight: FontWeight.bold,
                 fontSize: 25,
                 color: Color(0xff1363DF)
               ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Text(
-              'Login to your Account',style: TextStyle(
+              tr("login",context),
+              style:const TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 20,
                 color: Color(0xff1363DF)
             ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Text(
-                'Email',style: TextStyle(
+                tr("mail", context),style:const TextStyle(
                 fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Color(0xff40444C),
             ),),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               decoration:InputDecoration(
-                labelText: 'Enter your mail',
-                labelStyle: TextStyle(
+                labelText:tr("email", context) ,
+                labelStyle:const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 18,
                   color: Color(0xff96A0B6)
                 ),
-                border: OutlineInputBorder()
+                border: const OutlineInputBorder()
               ),
             ),
-            SizedBox(
+            const  SizedBox(
               height: 20,
             ),
             Text(
-              'Password',style: TextStyle(
+              tr("password", context),style:const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
               color: Color(0xff40444C),
             ),),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               decoration:InputDecoration(
-                  labelText: 'Password',
-                  suffixIcon: Icon(Icons.visibility_outlined),
-                  labelStyle: TextStyle(
+                  labelText: tr( "epassword", context),
+                  suffixIcon:const Icon(Icons.visibility_outlined),
+                  labelStyle:const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 18,
                       color: Color(0xff96A0B6)
                   ),
-                  border: OutlineInputBorder()
+                  border: const OutlineInputBorder()
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextButton(
               onPressed: (){
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder:(context) => Forget_Password_Screen(), ));
+                  builder:(context) => const Forget_Password_Screen(), ));
               },
               child: Text(
-                  'Forget password?',style: TextStyle(
+                 tr("forget", context),style:const TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 15,
                 color: Color(0xff5095FF)
               ),),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Container(
-              width: 360,
+              width: MediaQuery.of(context).size.width*.90,
               height: 44,
               decoration: BoxDecoration(
-                color: Color(0xff2C67FF),
+                color: const Color(0xff2C67FF),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: TextButton(
                 onPressed: (){
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder:(context) => Botton_Bar(), ));
+                    builder:(context) => const Botton_Bar(), ));
                 },
-                child: Text(   "Login",style: TextStyle(
+                child: Text(  tr("Login", context),style:const TextStyle(
                     fontSize: 15,fontWeight: FontWeight.w500,color: Colors.white
                 ),),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  child: Image.asset('assets/images/google.png'),
+                  child: Image.asset('assets/images/google.png',scale: 0.8,),
                 ),
                 Container(
-                  child: Image.asset('assets/images/facebook.png',color: Colors.blue,),
+                  child: Image.asset('assets/images/facebook.png',color: Colors.blue,scale: 0.7,),
                 ),
                 Container(
-                  child: Image.asset('assets/images/twitter.png'),
+                  child: Image.asset('assets/images/twitter.png',scale: 1),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Don’t have an account?',style: TextStyle(
+                 tr("have", context),style:const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
                     color: Color(0xff626C83)
                 ),),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 TextButton(
                   onPressed: (){
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder:(context) => Sign_Up_Screen(), ));
+                      builder:(context) => const Sign_Up_Screen(), ));
                   },
-                  child: Text('Signup',style: TextStyle(
+                  child: Text(tr("account", context),style:const TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 16,
                     color: Color(0xff007AFF)

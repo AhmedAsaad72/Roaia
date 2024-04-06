@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:roaia/localization/localization_methods.dart';
 import 'package:roaia/screen/home.dart';
 import 'package:roaia/screen/notification.dart';
 import 'package:roaia/screen/profile.dart';
@@ -16,8 +17,8 @@ class _Botton_BarState extends State<Botton_Bar> {
 
   int currentIndex=0;
 
-  List Screen=[
-    Home_Screen(),
+  List Screen=const[
+     Home_Screen(),
     User_Screen(),
     Notification_Screen(),
     Profile_Screen(),
@@ -30,21 +31,19 @@ class _Botton_BarState extends State<Botton_Bar> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
-        selectedIconTheme: IconThemeData(size: 40,),
-        selectedFontSize: 20,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.route_outlined), label: 'Location',
+            icon: const Icon(Icons.route_outlined), label: tr("location", context),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: 'User'),
+              icon: const Icon(Icons.person_outline),
+              label: tr("users", context)),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notification_important_outlined),
-              label: 'Notification'),
+              icon: const Icon(Icons.notification_important_outlined),
+              label: tr("notification", context)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_outlined),
-            label: 'Profile',),
+            icon: const Icon(Icons.account_circle_outlined),
+            label: tr("profile", context),),
         ],
         onTap: (index){
           setState(() {
